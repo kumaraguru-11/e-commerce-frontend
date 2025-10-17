@@ -1,0 +1,45 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Products": {
+    "list": [
+      {
+        "id": 1,
+        "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+        "description": "Your perfect pack for everyday use and walks in the forest.",
+        "price": 109.95,
+        "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
+      },
+      {
+        "id": 2,
+        "title": "Mens Casual Premium Slim Fit T-Shirts",
+        "description": "Slim-fitting style, soft fabric for breathable and comfortable wearing.",
+        "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+        "price": 22.3
+      },
+      {
+        "id": 3,
+        "title": "Mens Cotton Jacket",
+        "description": "Great outerwear jacket for all seasons. Ideal for outdoor activities.",
+        "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
+        "price": 55.99
+      },
+      {
+        "id": 4,
+        "title": "Mens Casual Slim Fit",
+        "description": "Modern design with perfect fit for everyday style.",
+        "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png",
+        "price": 15.99
+      },
+      {
+        "id": 5,
+        "title": "John Hardy Women's Legends Naga Gold & Silver Bracelet",
+        "description": "Inspired by the mythical dragon that protects the ocean's pearl.",
+        "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_t.png",
+        "price": 695
+      }
+    ],
+    "addToCart": "Add to Cart"
+  }
+}

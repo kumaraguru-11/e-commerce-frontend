@@ -1,0 +1,18 @@
+.card {
+  /* Dimensions and Background */
+  position: relative;
+  height: 200px;
+  width: 150px;
+  border: 1px solid white;
+  background: var(--color-card-foreground); /* A dark, semi-transparent background */
+
+  /* The crucial part: Defines the folder-like shape */
+  clip-path: path("M 10 20 L 60 20 A 10 10 0 0 0 70 10 L 70 10 A 10 10 0 0 1 80 0 L 140 0 A 10 10 0 0 1 150 10 L 150 190 A 10 10 0 0 1 140 200 L 10 200 A 10 10 0 0 1 0 190 L 0 30 A 10 10 0 0 1 10 20 Z");
+
+  /* Ensures content (like an image) stays within the clipped area */
+  overflow: hidden;
+
+  /* Optional: For visibility, demonstration, and centering */
+  margin: 50px; /* Example margin */
+  /* You can add a border or shadow here if needed */
+}
