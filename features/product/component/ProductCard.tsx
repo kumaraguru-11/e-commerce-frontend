@@ -18,42 +18,99 @@ type Products = {
 
 export function ProductCard() {
   const t = useTranslations("Products");
-  const locale = useLocale(); // Get current locale
-  const isRTL = locale === "ar"; // Arabic is RTL
+  const locale = useLocale();
+  const isRTL = locale === "ar";
 
   const products = t.raw("list");
 
   return (
-    <div className="flex gap-2 flex-wrap justify-between">
-      {products.slice(0, 4)?.map((item: Products) => (
-        <Card className="w-[300px]" key={item.id}>
-          {/* <Heart className="absolute left-5 top-5 cursor-pointer text-slate-400" /> */}
+    <>
+      {products.slice(0, 10)?.map((item: Products) => (
+        <Card
+          key={item.id}
+          className="flex flex-col w-full px-0" //max-w-[300px]
+          style={{
+            fontSize: "clamp(0.8rem, 1.5vw, 1rem)", // smooth font scaling
+          }}
+        >
           <CardHeader>
-            <div className="rounded aspect-square bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-              <img src={item.image} alt={item.title} width={150} height={100} />
+            <div
+              className="rounded bg-gray-200 dark:bg-gray-800 flex items-center justify-center"
+              style={{
+                aspectRatio: "1 / 1",
+                padding: "0.5rem", // optional, small padding around image
+              }}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                style={{
+                  width: "80%", // fill more of container
+                  height: "80%",
+                  objectFit: "contain",
+                }}
+              />
             </div>
           </CardHeader>
+
           <CardContent
-            className={`flex flex-1 flex-col gap-2 ${
-              isRTL ? "items-end text-right" : "items-start text-left"
-            }`}
+            className={`flex flex-1 flex-col gap-2`}
+            dir={isRTL ? "rtl" : "ltr"}
           >
-            <p className="flex-1">{item.title}</p>
-            <p className="font-bold text-primary">Rs.{item.price}</p>
+            <p
+              className="flex-1"
+              title={item.title}
+              style={{
+                fontSize: "clamp(1rem, 4vw, 1rem)", // bigger min font
+              }}
+            >
+              {item.title}
+            </p>
+            <p
+              className="font-bold text-primary"
+              style={{
+                fontSize: "clamp(1rem, 4vw, 1rem)", // bigger min font
+              }}
+            >
+              Rs.{item.price}
+            </p>
           </CardContent>
 
-          <CardFooter className="mt-auto flex justify-between">
-            <Button variant="outline">
-              <ShoppingBag />
+          <CardFooter className="mt-auto flex justify-between gap-2">
+            <Button
+              variant="outline"
+              style={{
+                fontSize: "clamp(0.7rem, 1vw, 0.9rem)",
+                padding:
+                  "clamp(0.3rem, 0.7vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)",
+              }}
+            >
+              <ShoppingBag
+                style={{
+                  width: "clamp(16px, 3vw, 22px)",
+                  height: "clamp(16px, 3vw, 22px)",
+                  marginRight: "0.3em",
+                }}
+              />
               {t("addToCart")}
             </Button>
-            <Button variant="outline">
-              {" "}
-              <Heart className="text-slate-400" />
+            <Button
+              variant="outline"
+              style={{
+                padding: "clamp(0.3rem, 0.7vw, 0.5rem)",
+              }}
+            >
+              <Heart
+                className="text-slate-400"
+                style={{
+                  width: "clamp(14px, 2vw, 20px)",
+                  height: "clamp(14px, 2vw, 20px)",
+                }}
+              />
             </Button>
           </CardFooter>
         </Card>
       ))}
-    </div>
+    </>
   );
 }

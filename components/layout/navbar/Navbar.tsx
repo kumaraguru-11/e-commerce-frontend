@@ -10,6 +10,14 @@ import {
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Sheet,
   SheetContent,
   SheetHeader,
@@ -101,14 +109,16 @@ export const Navbar = () => {
 
         {/* Right: Icons */}
         <div className="flex items-center gap-2">
+          {/* Search  Icon */}
           <Button
             variant="secondary"
             size="icon"
-            className="rounded-full cursor-pointer hidden sm:flex"
+            className="rounded-full cursor-pointer" //hidden sm:flex
             title="search"
           >
             <Search />
           </Button>
+          {/* Cart  Icon */}
           <Button
             variant="secondary"
             size="icon"
@@ -117,17 +127,27 @@ export const Navbar = () => {
           >
             <ShoppingCart />
           </Button>
-          <Button
-            variant="secondary"
-            size="icon"
-            className="rounded-full cursor-pointer"
-            title="profile"
-            onClick={handleDialogOpen}
-          >
-            <UserRound />
-          </Button>
+          {/* User  Icon */}
+          <DropdownMenu modal={false}>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="secondary"
+                size="icon"
+                className="rounded-full cursor-pointer"
+                title="profile"
+              >
+                <UserRound />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-40" align="end">
+              <DropdownMenuItem onSelect={handleDialogOpen}>
+                Manage Account
+              </DropdownMenuItem>
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Menu Icon and Sidebar  */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
