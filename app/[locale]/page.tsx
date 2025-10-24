@@ -1,27 +1,24 @@
-import { Navbar } from "@/components/layout/navbar/Navbar";
-import Footer from "@/components/layout/Footer";
-import { useLocale } from "next-intl";
+"use server";
 import { ProductCard } from "@/features/product/component/ProductCard";
-import { ProductCardTwo } from "@/features/product/component/ProductCard2";
-import { ProductCardThree } from "@/features/product/component/ProductCard3";
+import { getAllProducts } from "@/lib/service/productService";
 
-export default function Page() {
-  const locale = useLocale();
-  const isRTL = locale === "ar";
+export default async function Page() {
+  let products = [];
+  let error: string | null = null;
+
+  try {
+    products = await getAllProducts();
+  } catch (err: any) {
+    error = err.message;
+  }
+
   return (
     <>
-      <Navbar />
-      <section
-        // dir={isRTL ? "rtl" : "ltr"}
-        className={`p-5 grid gap-5 auto-rows-fr`}
-        style={{
-          gridTemplateColumns:
-            "repeat(auto-fit, minmax(clamp(200px, 20%, 300px), 1fr))",
-        }}
-      >
-        <ProductCard />
-      </section>
-      <Footer />
+      {error ? (
+        <p className="text-red-500 text-center col-span-full">{error}</p>
+      ) : (
+        <ProductCard products={products} />
+      )}
     </>
   );
 }
