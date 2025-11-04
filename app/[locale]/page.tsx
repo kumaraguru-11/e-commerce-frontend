@@ -8,8 +8,14 @@ export default async function Page() {
 
   try {
     products = await getAllProducts();
-  } catch (err: any) {
-    error = err.message;
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error("Error message:", err.message);
+      error = err.message; // ✅ now error is reassigned
+    } else {
+      console.error("Unknown error:", err);
+      error = "Unknown error occurred";
+    }
   }
 
   return (

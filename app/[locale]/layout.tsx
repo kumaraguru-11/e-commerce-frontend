@@ -37,8 +37,10 @@ export default async function LocaleLayout({ children, params }: Props) {
               enableSystem
               disableTransitionOnChange
             >
+              {/** Header */}
               <Navbar />
-              <section
+
+              <main
                 className={`p-5 grid gap-5 auto-rows-fr flex-1`}
                 style={{
                   gridTemplateColumns:
@@ -46,7 +48,9 @@ export default async function LocaleLayout({ children, params }: Props) {
                 }}
               >
                 {children}
-              </section>
+              </main>
+
+              {/** Footer */}
               <Footer />
             </ThemeProvider>
           </NextIntlClientProvider>

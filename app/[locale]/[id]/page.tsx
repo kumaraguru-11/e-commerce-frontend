@@ -8,8 +8,9 @@ type ProductPageProps = {
 };
 
 export default async function Page({ params }: ProductPageProps) {
+  const { id } = await params;
   try {
-    const product = await getProductById(params.id);
+    const product = await getProductById(id);
     return (
       <div className="container mx-auto p-4">
         {/* You can either pass it to ProductCard or display directly */}
@@ -17,7 +18,7 @@ export default async function Page({ params }: ProductPageProps) {
         <p>{product.description}</p>
       </div>
     );
-  } catch (error) {
+  } catch {
     return (
       <div className="flex h-screen items-center justify-center text-red-500">
         Failed to load product details. Please try again later.
